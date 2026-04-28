@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NH Emcee & Events</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #fdfaf6;
+  color: #1e1e1e;
+  padding-top: 80px; /* FIX NAVBAR CUT */
+}
+
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 60px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.7);
+}
+
+nav h2 {
+  font-family: 'Playfair Display', serif;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #c9a96e;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url('hero.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.55) 0%,
+    rgba(0,0,0,0.35) 40%,
+    rgba(0,0,0,0.1) 100%
+  );
+}
+
+.hero-text {
+  max-width: 500px;
+  position: relative;
+  color: white;
+  padding: 25px;
+  border-radius: 15px;
+  background: rgba(0,0,0,0.15);
+  backdrop-filter: blur(8px);
+  animation: fadeUp 1.2s ease;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 50px;
+  line-height: 1.2;
+  color: #fff;
+  text-shadow: 0 8px 25px rgba(0,0,0,0.8);
+}
+
+.hero p {
+  margin-top: 15px;
+  color: #f5f5f5;
+  text-shadow: 0 5px 15px rgba(0,0,0,0.7);
+}
+
+/* BUTTON */
+.btn {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 12px 25px;
+  background: #c9a96e;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* SECTION */
+section {
+  padding: 80px 60px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  scroll-margin-top: 100px;
+}
+
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+  transition: 1s ease;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+}
+
+/* SERVICES */
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* PACKAGE */
+.package {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.package img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* FOOTER */
+footer {
+  background: #111;
+  color: white;
+  padding: 40px;
+  text-align: center;
+}
+
+/* MOBILE */
+@media(max-width: 768px) {
+
+  nav {
+    padding: 15px 20px;
+  }
+
+  .hero {
+    padding: 0 20px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .package {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h2>NH Emcee & Events</h2>
+  <div>
+    <a href="#">Home</a>
+    <a href="#services">Services</a>
+    <a href="#package">Package</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-text">
+    <h1>Dignity, Grace & Lasting Harmony</h1>
+    <p>Professional emcee services for unforgettable weddings & events.</p>
+    <a href="https://wa.me/601164391517" class="btn">Book Now</a>
+  </div>
+</div>
+
+<section id="services">
+  <h2>Our Services</h2>
+  <div class="services">
+    <div class="card">
+      <h3>Professional Emcees</h3>
+      <p>2 experienced emcees to host your event.</p>
+    </div>
+
+    <div class="card">
+      <h3>Event Coordination</h3>
+      <p>Ensure smooth flow throughout event.</p>
+    </div>
+
+    <div class="card">
+      <h3>Custom Script</h3>
+      <p>Bilingual & personalized scripts.</p>
+    </div>
+
+    <div class="card">
+      <h3>Consultation</h3>
+      <p>Planning & rehearsal session included.</p>
+    </div>
+  </div>
+</section>
+
+<section id="package">
+  <h2>Wedding Reception Package</h2>
+
+  <div class="package">
+    <img src="wedding.jpg">
+
+    <div style="text-align:left;">
+      <p><strong>Full Day:</strong> 8AM – 4PM</p>
+
+      <p>✔ 2 Professional Emcees</p>
+      <p>✔ Floor Manager</p>
+      <p>✔ Script & Rehearsal</p>
+      <p>✔ Vendor Coordination</p>
+
+      <h3 style="margin-top:20px;">Total: RM1,500</h3>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Moments</h2>
+  <div class="gallery">
+    <img src="wedding.jpg">
+    <img src="event.jpg">
+    <img src="hero.jpg">
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>📞 011-64391517</p>
+  <p>📍 Kuala Lumpur / Negeri Sembilan</p>
+</section>
+
+<footer>
+  <p>© 2026 NH Emcee & Events</p>
+</footer>
+
+<script>
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100) {
+      sec.classList.add("show");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
